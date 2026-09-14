@@ -83,8 +83,63 @@ function EqBars({ playing }: { playing: boolean }) {
   );
 }
 
+function GlowPulse() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      gsap.set(el, { scale: 1, opacity: 0.45 });
+      return;
+    }
+
+    gsap.set(el, { scale: 0.55, opacity: 0.7 });
+    const tween = gsap.to(el, {
+      scale: 1.25,
+      opacity: 0,
+      duration: 1.1,
+      ease: "power2.out",
+      repeat: -1,
+      yoyo: true
+    });
+
+    const sync = () => (document.hidden ? tween.pause() : tween.resume());
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          if (!document.hidden) tween.resume();
+        } else {
+          tween.pause();
+        }
+      },
+      { rootMargin: "40px" }
+    );
+    io.observe(el);
+    document.addEventListener("visibilitychange", sync);
+
+    return () => {
+      io.disconnect();
+      document.removeEventListener("visibilitychange", sync);
+      tween.kill();
+    };
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-primary/50 to-accent/30 blur-xl"
+    />
+  );
+}
+
 export default function Music() {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const cardRefs = useRef<(HTMLElement | null)[]>([]);
+  const btnRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const iconRefs = useRef<(SVGSVGElement | null)[]>([]);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -162,6 +217,42 @@ export default function Music() {
     }
   }, []);
 
+  const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  useEffect(() => {
+    if (reducedMotion() || activeIndex == null) return;
+    const el = cardRefs.current[activeIndex];
+    if (el) {
+      gsap.fromTo(el, { scale: 0.96 }, { scale: 1, duration: 0.45, ease: "back.out(2)", overwrite: "auto" });
+    }
+  }, [activeIndex]);
+
+  useEffect(() => {
+    if (reducedMotion()) return;
+    iconRefs.current.forEach((el, i) => {
+      if (!el) return;
+      gsap.to(el, {
+        scale: activeIndex === i && isPlaying ? 1.15 : 1,
+        duration: 0.3,
+        ease: "back.out(2)",
+        overwrite: "auto"
+      });
+    });
+  }, [activeIndex, isPlaying]);
+
+  const onPlay = useCallback(
+    (i: number) => {
+      if (!reducedMotion()) {
+        const btn = btnRefs.current[i];
+        if (btn) {
+          gsap.fromTo(btn, { scale: 0.85 }, { scale: 1, duration: 0.4, ease: "back.out(2.5)", overwrite: "auto" });
+        }
+      }
+      playSong(i);
+    },
+    [playSong]
+  );
+
   return (
     <section id="music" className="bg-secondary px-6 py-[4.5rem]">
       <div className="mx-auto max-w-6xl">
@@ -189,6 +280,9 @@ export default function Music() {
             return (
               <article
                 key={i}
+                ref={(el) => {
+                  cardRefs.current[i] = el;
+                }}
                 aria-label={`${song.title} oleh ${song.artist}`}
                 className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border transition-all duration-300 ${
                   isActive
@@ -200,11 +294,15 @@ export default function Music() {
                   className={`relative flex aspect-square items-center justify-center overflow-hidden bg-gradient-to-br ${gradients[i % gradients.length]}`}
                 >
                   <MusicIcon
+                    ref={(el) => {
+                      iconRefs.current[i] = el;
+                    }}
                     className="size-10 text-primary/50 transition duration-500 group-hover:scale-110"
                     strokeWidth={1.5}
                     aria-hidden="true"
                   />
                   {isActive && <EqBars playing={isPlaying} />}
+                  {isActive && isPlaying && <GlowPulse />}
                 </div>
 
                 <div className="flex flex-1 flex-col p-4">
@@ -238,8 +336,11 @@ export default function Music() {
 
                     <button
                       type="button"
+                      ref={(el) => {
+                        btnRefs.current[i] = el;
+                      }}
                       disabled={!canPlay}
-                      onClick={() => playSong(i)}
+                      onClick={() => onPlay(i)}
                       title={!canPlay ? "Preview belum tersedia" : undefined}
                       aria-label={isActive && isPlaying ? `Jeda ${song.title}` : `Putar ${song.title}`}
                       aria-pressed={isActive && isPlaying}
