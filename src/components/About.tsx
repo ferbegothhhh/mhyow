@@ -15,14 +15,12 @@ export default function About() {
           <ScrollReveal>
             <div className="space-y-4">
               <p className="text-muted-foreground">
-                Saya adalah seorang pelajar yang sedang menempuh pendidikan di{" "}
-                <strong className="text-foreground">[Nama Sekolah / Jurusan]</strong>. Saya tertarik pada
-                dunia teknologi, terutama web development, desain, dan game.
-              </p>
-              <p className="text-muted-foreground">
-                Di luar jam pelajaran, saya suka eksplorasi tools baru, ikut komunitas belajar, dan
-                mengerjakan project kecil-kecilan untuk mengasah kemampuan. Tujuan saya adalah terus
-                belajar dan suatu hari bisa berkontribusi di industri teknologi.
+                Selamat datang di ruang kreatif saya. Saya menggabungkan kecintaan pada seni visual
+                (digital art &amp; melukis) dengan keterampilan kriya (merajut &amp; handmade gifts) untuk
+                menghasilkan karya yang tidak hanya estetis, tetapi juga memiliki nilai emosional.
+                Berbekal kreativitas yang terus menyala dari musik dan hobi memasak, saya berkomitmen
+                untuk menghadirkan produk dan karya seni yang autentik, dibuat dengan hati, dan dirancang
+                khusus untuk Anda.
               </p>
             </div>
           </ScrollReveal>

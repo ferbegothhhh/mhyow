@@ -27,7 +27,7 @@ export default function Hero() {
             />
           </div>
           <p className="animate-hero-fade-up mx-auto mt-4 max-w-[560px] text-muted-foreground [animation-delay:0.45s] text-base md:text-xl md:mx-0">
-            Pelajar yang suka eksplorasi teknologi, desain, dan sedang belajar membangun hal-hal keren di internet.
+            Kreator visual dan kriya yang menemukan kebahagiaan dalam proses penciptaan. Keahlian saya mencakup digital art, melukis, merajut, membuat handmade gifts yang berkesan, hingga meracik resep di dapur. Setiap karya lahir dari ketelitian, imajinasi, dan inspirasi dari musik yang saya dengarkan.
           </p>
           <div className="animate-hero-fade-up mt-5 flex flex-wrap items-center justify-center gap-4 [animation-delay:0.6s] md:justify-start">
             <a
