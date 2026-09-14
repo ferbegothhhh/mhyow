@@ -22,27 +22,31 @@ export default function Games() {
           </p>
         </ScrollReveal>
 
-        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <ScrollReveal
+          stagger={0.08}
+          className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+        >
           {games.map((game, i) => (
-            <ScrollReveal key={i} className="h-full">
-              <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-accent bg-background transition hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(236,72,153,0.12)]">
-                <div className="flex aspect-[16/10] items-center justify-center bg-accent">
-                  <Gamepad2 className="size-12 text-primary/50" strokeWidth={1.5} />
-                </div>
-                <div className="flex flex-1 flex-col p-5">
-                  <h3 className="mb-1 text-lg font-bold">{game.name}</h3>
-                  <p className="mb-3 text-sm font-medium text-accent-foreground">{game.meta}</p>
-                  <a
-                    href="#"
-                    className="mt-auto rounded-full bg-primary px-4 py-1.5 text-center text-xs font-semibold text-primary-foreground transition hover:bg-accent-foreground"
-                  >
-                    Selengkapnya
-                  </a>
-                </div>
-              </article>
-            </ScrollReveal>
+            <article
+              key={i}
+              className="flex h-full flex-col overflow-hidden rounded-2xl border border-accent bg-background transition hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(236,72,153,0.12)]"
+            >
+              <div className="flex aspect-[16/10] items-center justify-center bg-accent">
+                <Gamepad2 className="size-12 text-primary/50" strokeWidth={1.5} />
+              </div>
+              <div className="flex flex-1 flex-col p-5">
+                <h3 className="mb-1 text-lg font-bold">{game.name}</h3>
+                <p className="mb-3 text-sm font-medium text-accent-foreground">{game.meta}</p>
+                <a
+                  href="#"
+                  className="mt-auto rounded-full bg-primary px-4 py-1.5 text-center text-xs font-semibold text-primary-foreground transition hover:bg-accent-foreground"
+                >
+                  Selengkapnya
+                </a>
+              </div>
+            </article>
           ))}
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

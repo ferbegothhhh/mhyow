@@ -22,28 +22,32 @@ export default function Music() {
           </p>
         </ScrollReveal>
 
-        <div className="mt-8 grid grid-cols-2 gap-6 md:grid-cols-4">
+        <ScrollReveal
+          stagger={0.08}
+          className="mt-8 grid grid-cols-2 gap-6 md:grid-cols-4"
+        >
           {songs.map((song, i) => (
-            <ScrollReveal key={i} className="h-full">
-              <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-accent bg-background transition hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(236,72,153,0.12)]">
-                <div className="flex aspect-square items-center justify-center bg-accent">
-                  <MusicIcon className="size-10 text-primary/50" strokeWidth={1.5} />
-                </div>
-                <div className="flex flex-1 flex-col p-4">
-                  <h3 className="mb-0.5 text-base font-bold">{song.title}</h3>
-                  <p className="mb-3 text-xs text-muted-foreground">{song.artist}</p>
-                  <a
-                    href="#"
-                    className="mt-auto inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 text-xs font-semibold text-primary-foreground transition hover:bg-accent-foreground"
-                  >
-                    <Play className="size-3" fill="currentColor" />
-                    Dengar
-                  </a>
-                </div>
-              </article>
-            </ScrollReveal>
+            <article
+              key={i}
+              className="flex h-full flex-col overflow-hidden rounded-2xl border border-accent bg-background transition hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(236,72,153,0.12)]"
+            >
+              <div className="flex aspect-square items-center justify-center bg-accent">
+                <MusicIcon className="size-10 text-primary/50" strokeWidth={1.5} />
+              </div>
+              <div className="flex flex-1 flex-col p-4">
+                <h3 className="mb-0.5 text-base font-bold">{song.title}</h3>
+                <p className="mb-3 text-xs text-muted-foreground">{song.artist}</p>
+                <a
+                  href="#"
+                  className="mt-auto inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 text-xs font-semibold text-primary-foreground transition hover:bg-accent-foreground"
+                >
+                  <Play className="size-3" fill="currentColor" />
+                  Dengar
+                </a>
+              </div>
+            </article>
           ))}
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

@@ -38,6 +38,11 @@ const PillNav: React.FC<PillNavProps> = ({
 }) => {
   const resolvedPillTextColor = pillTextColor ?? baseColor;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [reducedMotion] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
   const circleRefs = useRef<Array<HTMLSpanElement | null>>([]);
   const tlRefs = useRef<Array<gsap.core.Timeline | null>>([]);
   const activeTweenRefs = useRef<Array<gsap.core.Tween | null>>([]);
@@ -80,6 +85,8 @@ const PillNav: React.FC<PillNavProps> = ({
         const index = circleRefs.current.indexOf(circle);
         if (index === -1) return;
 
+        if (reducedMotion) return;
+
         tlRefs.current[index]?.kill();
         const tl = gsap.timeline({ paused: true });
 
@@ -112,7 +119,7 @@ const PillNav: React.FC<PillNavProps> = ({
       gsap.set(menu, { visibility: 'hidden', opacity: 0, scaleY: 1, y: 0 });
     }
 
-    if (initialLoadAnimation) {
+    if (initialLoadAnimation && !reducedMotion) {
       const logo = logoRef.current;
       const navItems = navItemsRef.current;
 
@@ -136,9 +143,10 @@ const PillNav: React.FC<PillNavProps> = ({
     }
 
     return () => window.removeEventListener('resize', onResize);
-  }, [items, ease, initialLoadAnimation]);
+  }, [items, ease, initialLoadAnimation, reducedMotion]);
 
   const handleEnter = (i: number) => {
+    if (reducedMotion) return;
     const tl = tlRefs.current[i];
     if (!tl) return;
     activeTweenRefs.current[i]?.kill();
@@ -150,6 +158,7 @@ const PillNav: React.FC<PillNavProps> = ({
   };
 
   const handleLeave = (i: number) => {
+    if (reducedMotion) return;
     const tl = tlRefs.current[i];
     if (!tl) return;
     activeTweenRefs.current[i]?.kill();
@@ -161,6 +170,7 @@ const PillNav: React.FC<PillNavProps> = ({
   };
 
   const handleLogoEnter = () => {
+    if (reducedMotion) return;
     const img = logoImgRef.current;
     if (!img) return;
     logoTweenRef.current?.kill();
@@ -236,7 +246,7 @@ const PillNav: React.FC<PillNavProps> = ({
   } as React.CSSProperties;
 
   return (
-    <div className="absolute top-4 z-[1000] w-full left-0 md:w-auto md:right-4 md:left-auto">
+    <div className="fixed top-4 z-[1000] w-full left-0 px-4 md:w-auto md:left-1/2 md:-translate-x-1/2 md:px-0">
       <nav
         className={`w-full md:w-max flex items-center justify-between md:justify-start box-border px-4 md:px-0 ${className}`}
         aria-label="Primary"
@@ -249,7 +259,7 @@ const PillNav: React.FC<PillNavProps> = ({
           ref={el => {
             logoRef.current = el;
           }}
-          className="rounded-full p-2 inline-flex items-center justify-center overflow-hidden"
+          className="rounded-full p-2 inline-flex items-center justify-center overflow-hidden shadow-[0_6px_18px_rgba(236,72,153,0.35)]"
           style={{
             width: 'var(--nav-h)',
             height: 'var(--nav-h)',
@@ -261,7 +271,7 @@ const PillNav: React.FC<PillNavProps> = ({
 
         <div
           ref={navItemsRef}
-          className="relative items-center rounded-full hidden md:flex ml-2"
+          className="relative items-center rounded-full hidden md:flex ml-2 shadow-[0_8px_22px_rgba(236,72,153,0.3)]"
           style={{
             height: 'var(--nav-h)',
             background: 'var(--base, #000)'
@@ -315,7 +325,7 @@ const PillNav: React.FC<PillNavProps> = ({
                   </span>
                   {isActive && (
                     <span
-                      className="absolute left-1/2 -bottom-[6px] -translate-x-1/2 w-3 h-3 rounded-full z-[4]"
+                      className="absolute left-1/2 top-[2px] -translate-x-1/2 w-[5px] h-[5px] rounded-full z-[4]"
                       style={{ background: 'var(--base, #000)' }}
                       aria-hidden="true"
                     />
@@ -350,7 +360,7 @@ const PillNav: React.FC<PillNavProps> = ({
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
           aria-expanded={isMobileMenuOpen}
-          className="md:hidden rounded-full border-0 flex flex-col items-center justify-center gap-1 cursor-pointer p-0 relative"
+          className="md:hidden rounded-full border-0 flex flex-col items-center justify-center gap-1 cursor-pointer p-0 relative shadow-[0_6px_18px_rgba(236,72,153,0.35)]"
           style={{
             width: 'var(--nav-h)',
             height: 'var(--nav-h)',
@@ -358,11 +368,11 @@ const PillNav: React.FC<PillNavProps> = ({
           }}
         >
           <span
-            className="hamburger-line w-4 h-0.5 rounded origin-center transition-all duration-[10ms] ease-[cubic-bezier(0.25,0.1,0.25,1)]"
+            className="hamburger-line w-4 h-0.5 rounded origin-center transition-all duration-200"
             style={{ background: 'var(--pill-bg, #fff)' }}
           />
           <span
-            className="hamburger-line w-4 h-0.5 rounded origin-center transition-all duration-[10ms] ease-[cubic-bezier(0.25,0.1,0.25,1)]"
+            className="hamburger-line w-4 h-0.5 rounded origin-center transition-all duration-200"
             style={{ background: 'var(--pill-bg, #fff)' }}
           />
         </button>
@@ -370,7 +380,7 @@ const PillNav: React.FC<PillNavProps> = ({
 
       <div
         ref={mobileMenuRef}
-        className="md:hidden absolute top-[3em] left-4 right-4 rounded-[27px] shadow-[0_8px_32px_rgba(0,0,0,0.12)] z-[998] origin-top"
+        className="md:hidden absolute top-[3em] left-4 right-4 rounded-[27px] shadow-[0_8px_32px_rgba(236,72,153,0.35)] z-[998] origin-top"
         style={{
           ...cssVars,
           background: 'var(--base, #f0f0f0)'

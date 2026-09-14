@@ -1,6 +1,7 @@
 import { HandwritingSvg } from "@/components/handwriting-svg";
 import RevealWords from "@/components/RevealWords";
 import ProfileCard from "@/components/ProfileCard";
+import Parallax from "@/components/Parallax";
 
 export default function Hero() {
   return (
@@ -11,7 +12,7 @@ export default function Hero() {
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-8 text-center md:flex-row md:justify-between md:text-left">
         <div className="flex-1">
           <p className="font-display font-semibold text-foreground/80 text-lg md:text-xl">
-            <RevealWords text="Halo, saya" baseDelay={0.1} step={0.08} />
+            <RevealWords text="Halo, saya" variant="chars" baseDelay={0.1} step={0.06} />
           </p>
           <div className="animate-hero-fade-up [animation-delay:0.3s]">
             <HandwritingSvg
@@ -48,20 +49,22 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="animate-hero-card-in [animation-delay:0.6s]">
-          <ProfileCard
-            avatarUrl="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop"
-            miniAvatarUrl="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop"
-            name="Yuan/Mhyow"
-            title="Digital Art & Kriya"
-            handle="yuanmhyow"
-            status="Terbuka untuk kolaborasi"
-            contactText="Hubungi"
-            onContactClick={() =>
-              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
-            }
-          />
-        </div>
+        <Parallax speed={-14}>
+          <div className="animate-hero-card-in [animation-delay:0.6s]">
+            <ProfileCard
+              avatarUrl="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop"
+              miniAvatarUrl="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop"
+              name="Yuan/Mhyow"
+              title="Digital Art & Kriya"
+              handle="yuanmhyow"
+              status="Terbuka untuk kolaborasi"
+              contactText="Hubungi"
+              onContactClick={() =>
+                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+              }
+            />
+          </div>
+        </Parallax>
       </div>
     </section>
   );
