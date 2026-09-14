@@ -1,56 +1,48 @@
-# Portofolio Pribadi (React + Vite)
+# Portofolio Pribadi Yuan/Mhyow
 
-Portfolio pribadi Yuan/Mhyow dengan tema **pink & putih**, responsif, dan memakai
-navbar **variable-font-hover** (animasi per karakter) dari `react-nav`.
+Portfolio pribadi React + Vite + TypeScript + Tailwind CSS dengan tema **pink & putih**, navbar variable-font-hover, dan animasi handwriting SVG.
 
-## Struktur Folder
+## Struktur
 
 ```
 temp_repo/
-├── react-nav/          # Portfolio utama (React 19 + Vite + TypeScript + Tailwind)
-│   ├── src/
-│   │   ├── components/ # Hero, About, Skills, Projects, Music, Games, Contact, Footer
-│   │   │   └── ui/     # VariableFontHover nav (animasi variabel font)
-│   │   ├── hooks/      # useTypewriter, useMousePositionRef
-│   │   └── index.css   # Tema pink & putih + keyframe animations
-│   └── package.json
-├── css/                # (Legacy) CSS vanilla — sudah digantikan React
-├── js/                 # (Legacy) JS vanilla — sudah digantikan React
-├── index.html          # (Legacy) HTML vanilla — sudah digantikan React
-└── assets/             # (Legacy) gambar placeholder
+├── src/
+│   ├── components/          # Hero, About, Skills, Projects, Music, Games, Contact, Footer
+│   │   ├── ui/              # Navbar variable-font-hover, Button, HandwritingSvg
+│   │   └── ScrollReveal.tsx
+│   ├── hooks/               # useMousePositionRef
+│   ├── lib/                 # utils (cn helper)
+│   └── index.css            # Tema pink & putih + keyframe animations
+├── public/fonts/            # Font handwriting untuk nama
+├── index.html
+├── package.json
+└── vite.config.ts
 ```
 
 ## Cara Menjalankan
 
 ```bash
-cd react-nav
 npm install
-npm run dev        # development
+npm run dev        # development → http://localhost:5173
 npm run build      # build produksi ke dist/
-npm run preview    # preview hasil build
+npm run preview    # preview hasil build → http://localhost:4173
 ```
 
 ## Yang Perlu Kamu Edit (Placeholder)
 
-Cari dan ganti semua tulisan di dalam kurung siku `[...]` di
-`react-nav/src/components/`:
+Cari dan ganti tulisan dalam kurung siku `[...]` di `src/components/`:
 
-- **Hero, About, Contact, Footer** → nama, sekolah, kota, email, dan link sosial media
-- **Projects.tsx** → judul project, deskripsi, dan link Demo/Source
-- **Music.tsx** → judul lagu, nama artis, dan link "Dengar"
-- **Games.tsx** → nama game, platform, genre, dan link
+- **Hero** → avatar placeholder, nama
+- **About** → nama sekolah, kota, topik belajar
+- **Projects** → judul, deskripsi, tags, link demo/source
+- **Music** → judul lagu, artis
+- **Games** → nama game, platform
+- **Contact** → email, link GitHub/LinkedIn/Instagram
 
-Ganti emoji placeholder (`👤`, `🖼️`, `🎵`, `🎮`) pada kartu dengan gambar nyata
-di `react-nav/src/assets/img/`.
+Ganti emoji placeholder (`👤`, `🖼️`, `🎵`, `🎮`) dengan gambar asli dari `src/assets/img/` atau `public/`.
 
 ## Deploy Gratis
 
-- **Vercel**: import repo di vercel.com → root folder `react-nav`
-- **Netlify**: build command `npm run build` di folder `react-nav`, publish `dist`
-- **GitHub Pages**: build lalu deploy folder `react-nav/dist`
-
-## Catatan Form Kontak
-
-Form di Contact murni statis — belum benar-benar kirim pesan. Untuk mengaktifkannya,
-daftar gratis di [Formspree](https://formspree.io), lalu pakai `action`
-Formspree di form Contact.tsx.
+- **Vercel**: import repo → build command: `npm run build`, output: `dist`
+- **Netlify**: build command: `npm run build`, publish: `dist`
+- **GitHub Pages**: build lalu deploy folder `dist`
