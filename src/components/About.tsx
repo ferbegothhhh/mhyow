@@ -2,8 +2,8 @@ import ScrollReveal from "./ScrollReveal";
 
 export default function About() {
   return (
-    <section id="about" className="px-6 py-[4.5rem]">
-      <div className="mx-auto max-w-6xl">
+    <section id="about" className="bg-gradient-to-br from-background via-accent/40 to-accent/70 px-6 py-[4.5rem]">
+      <div className="w-full">
         <ScrollReveal>
           <h2 className="mb-8 text-center text-3xl font-bold md:text-4xl">
             Tentang Saya
