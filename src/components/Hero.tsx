@@ -1,4 +1,3 @@
-import Bubbles from "./Bubbles";
 import { HandwritingSvg } from "@/components/handwriting-svg";
 import RevealWords from "@/components/RevealWords";
 import ProfileCard from "@/components/ProfileCard";
@@ -9,8 +8,6 @@ export default function Hero() {
       id="home"
       className="relative flex min-h-screen items-center overflow-hidden bg-gradient-to-br from-background to-accent px-6 py-12"
     >
-      <Bubbles />
-
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-8 text-center md:flex-row md:justify-between md:text-left">
         <div className="flex-1">
           <p className="font-display font-semibold text-foreground/80 text-lg md:text-xl">

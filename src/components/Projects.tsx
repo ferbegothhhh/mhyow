@@ -1,4 +1,5 @@
 import ScrollReveal from "./ScrollReveal";
+import { Image } from "lucide-react";
 
 const projects = [
   {
@@ -33,8 +34,8 @@ export default function Projects() {
           {projects.map((p, i) => (
             <ScrollReveal key={i} className="h-full">
               <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-accent bg-background transition hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(236,72,153,0.12)]">
-                <div className="flex aspect-[16/10] items-center justify-center bg-accent text-5xl">
-                  🖼️
+                <div className="flex aspect-[16/10] items-center justify-center bg-accent">
+                  <Image className="size-12 text-primary/50" strokeWidth={1.5} />
                 </div>
                 <div className="flex flex-1 flex-col p-5">
                   <h3 className="mb-1 text-lg font-bold">{p.title}</h3>

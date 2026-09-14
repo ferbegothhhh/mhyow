@@ -1,12 +1,14 @@
 import ScrollReveal from "./ScrollReveal";
+import { Globe, Zap, Palette, BarChart3, Languages, Gamepad2 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
-const skills = [
-  { icon: "🌐", name: "HTML & CSS" },
-  { icon: "⚡", name: "JavaScript" },
-  { icon: "🎨", name: "Desain (Canva/Figma)" },
-  { icon: "📊", name: "Microsoft Office" },
-  { icon: "🗣️", name: "Bahasa Inggris" },
-  { icon: "🎮", name: "Game Dev (Dasar)" },
+const skills: { icon: LucideIcon; name: string }[] = [
+  { icon: Globe, name: "HTML & CSS" },
+  { icon: Zap, name: "JavaScript" },
+  { icon: Palette, name: "Desain (Canva/Figma)" },
+  { icon: BarChart3, name: "Microsoft Office" },
+  { icon: Languages, name: "Bahasa Inggris" },
+  { icon: Gamepad2, name: "Game Dev (Dasar)" },
 ];
 
 export default function Skills() {
@@ -24,7 +26,7 @@ export default function Skills() {
           {skills.map((skill, index) => (
             <ScrollReveal key={index} className="h-full">
               <div className="flex h-full items-center gap-3 rounded-xl border border-accent bg-background p-4 transition hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(236,72,153,0.12)]">
-                <span className="text-2xl">{skill.icon}</span>
+                <skill.icon className="size-5 shrink-0 text-primary" strokeWidth={2} />
                 <p className="font-medium">{skill.name}</p>
               </div>
             </ScrollReveal>

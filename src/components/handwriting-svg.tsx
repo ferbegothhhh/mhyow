@@ -1,5 +1,3 @@
-"use client";
-
 import { motion } from "framer-motion";
 import * as opentype from "opentype.js";
 import { useEffect, useState } from "react";
@@ -36,19 +34,17 @@ export function HandwritingSvg({
   fontSize = 48,
   ease = "easeInOut",
 }: HandwritingSvgProps) {
-  const [path, setPath] = useState<string | null>(pathProp ?? null);
-  const [viewBox, setViewBox] = useState(`${0} ${0} ${width} ${height}`);
-  const [loading, setLoading] = useState(!!text && !pathProp);
+  const [fontPath, setFontPath] = useState<string | null>(null);
+  const [fontViewBox, setFontViewBox] = useState(`0 0 ${width} ${height}`);
+  const [fontReady, setFontReady] = useState(false);
+
+  const needsFont = !!text && !pathProp;
+  const d = pathProp ?? fontPath;
+  const loading = needsFont && !fontReady;
 
   useEffect(() => {
-    if (!text || pathProp) {
-      setPath(pathProp ?? null);
-      setViewBox(`0 0 ${width} ${height}`);
-      setLoading(false);
-      return;
-    }
+    if (!needsFont) return;
     let cancelled = false;
-    setLoading(true);
     fetch(fontUrl)
       .then((res) => res.arrayBuffer())
       .then((buffer) => {
@@ -63,23 +59,23 @@ export function HandwritingSvg({
         const vy = Math.floor(bbox.y1) - pad;
         const vw = Math.ceil(bbox.x2 - bbox.x1) + pad * 2;
         const vh = Math.ceil(bbox.y2 - bbox.y1) + pad * 2;
-        setViewBox(`${vx} ${vy} ${vw} ${vh}`);
-        setPath(p.toPathData(2));
+        setFontViewBox(`${vx} ${vy} ${vw} ${vh}`);
+        setFontPath(p.toPathData(2));
       })
       .catch(() => {
         if (!cancelled) {
-          setPath(null);
+          setFontPath(null);
         }
       })
       .finally(() => {
         if (!cancelled) {
-          setLoading(false);
+          setFontReady(true);
         }
       });
     return () => {
       cancelled = true;
     };
-  }, [text, fontUrl, pathProp, fontSize, width, height]);
+  }, [needsFont, text, fontUrl, fontSize]);
 
   if (loading) {
     return (
@@ -104,7 +100,6 @@ export function HandwritingSvg({
     );
   }
 
-  const d = path ?? "";
   if (!d) {
     return (
       <svg
@@ -128,7 +123,7 @@ export function HandwritingSvg({
     );
   }
 
-  const svgViewBox = pathProp ? `0 0 ${width} ${height}` : viewBox;
+  const svgViewBox = pathProp ? `0 0 ${width} ${height}` : fontViewBox;
 
   return (
     <svg

@@ -1,4 +1,5 @@
 import ScrollReveal from "./ScrollReveal";
+import { MapPin, GraduationCap, Lightbulb, Sprout } from "lucide-react";
 
 export default function About() {
   return (
@@ -29,10 +30,22 @@ export default function About() {
               <div className="rounded-xl border border-accent bg-secondary p-6">
                 <h3 className="mb-4 font-bold text-accent-foreground">Highlight</h3>
                 <ul className="space-y-2.5 text-foreground">
-                  <li className="reveal-item [transition-delay:300ms]">📍 [Kota / Domisili]</li>
-                  <li className="reveal-item [transition-delay:380ms]">🎓 [Nama Sekolah] — [Tahun masuk–sekarang]</li>
-                  <li className="reveal-item [transition-delay:460ms]">💡 Interested: Web Dev, UI/UX, Game</li>
-                  <li className="reveal-item [transition-delay:540ms]">🌱 Sedang belajar: [Topik yang sedang dipelajari]</li>
+                  <li className="reveal-item flex items-center gap-2 [transition-delay:300ms]">
+                    <MapPin className="size-4 shrink-0 text-primary" />
+                    [Kota / Domisili]
+                  </li>
+                  <li className="reveal-item flex items-center gap-2 [transition-delay:380ms]">
+                    <GraduationCap className="size-4 shrink-0 text-primary" />
+                    [Nama Sekolah] — [Tahun masuk–sekarang]
+                  </li>
+                  <li className="reveal-item flex items-center gap-2 [transition-delay:460ms]">
+                    <Lightbulb className="size-4 shrink-0 text-primary" />
+                    Interested: Web Dev, UI/UX, Game
+                  </li>
+                  <li className="reveal-item flex items-center gap-2 [transition-delay:540ms]">
+                    <Sprout className="size-4 shrink-0 text-primary" />
+                    Sedang belajar: [Topik yang sedang dipelajari]
+                  </li>
                 </ul>
               </div>
             </div>

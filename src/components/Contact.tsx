@@ -1,11 +1,15 @@
-import { useState, type FormEvent } from "react";
+import { useState, type ComponentType, type FormEvent } from "react";
 import ScrollReveal from "./ScrollReveal";
+import { Mail } from "lucide-react";
+import { GithubLogo, LinkedinLogo, InstagramLogo } from "@phosphor-icons/react";
 
-const contacts = [
-  { icon: "📧", label: "emailkamu@example.com", href: "mailto:emailkamu@example.com" },
-  { icon: "🐙", label: "GitHub", href: "https://github.com/username" },
-  { icon: "💼", label: "LinkedIn", href: "https://www.linkedin.com/in/username" },
-  { icon: "📸", label: "Instagram", href: "https://www.instagram.com/username" },
+type ContactIcon = ComponentType<{ className?: string }>;
+
+const contacts: { icon: ContactIcon; label: string; href: string }[] = [
+  { icon: Mail, label: "emailkamu@example.com", href: "mailto:emailkamu@example.com" },
+  { icon: GithubLogo, label: "GitHub", href: "https://github.com/username" },
+  { icon: LinkedinLogo, label: "LinkedIn", href: "https://www.linkedin.com/in/username" },
+  { icon: InstagramLogo, label: "Instagram", href: "https://www.instagram.com/username" },
 ];
 
 export default function Contact() {
@@ -58,8 +62,8 @@ export default function Contact() {
               </p>
               <ul className="space-y-2">
                 {contacts.map((c, i) => (
-                  <li key={i} className="py-1">
-                    <span className="mr-1">{c.icon}</span>
+                  <li key={i} className="flex items-center gap-2 py-1">
+                    <c.icon className="size-4 shrink-0 text-primary" />
                     <a href={c.href} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                       {c.label}
                     </a>
