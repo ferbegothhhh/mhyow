@@ -3,16 +3,17 @@ import { useEffect, useRef, type ReactNode } from "react";
 interface ScrollRevealProps {
   children: ReactNode;
   className?: string;
+  group?: boolean;
 }
 
-export default function ScrollReveal({ children, className }: ScrollRevealProps) {
+export default function ScrollReveal({ children, className, group }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    el.classList.add("reveal");
+    el.classList.add(group ? "reveal-group" : "reveal");
 
     if ("IntersectionObserver" in window) {
       const observer = new IntersectionObserver(
@@ -31,7 +32,7 @@ export default function ScrollReveal({ children, className }: ScrollRevealProps)
     }
 
     el.classList.add("visible");
-  }, []);
+  }, [group]);
 
   return (
     <div ref={ref} className={className}>
