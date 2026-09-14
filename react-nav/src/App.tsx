@@ -1,31 +1,34 @@
 import VariableFontHoverNav from "@/components/ui/m-variable-font-hover-1"
+import Hero from "@/components/Hero"
+import About from "@/components/About"
+import Skills from "@/components/Skills"
+import Projects from "@/components/Projects"
+import Music from "@/components/Music"
+import Games from "@/components/Games"
+import Contact from "@/components/Contact"
+import Footer from "@/components/Footer"
 
 function App() {
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <header className="sticky top-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur">
-        <VariableFontHoverNav />
-      </header>
-      
-      <section id="home" className="flex flex-col items-center justify-center py-20 px-6 text-center">
-        <h1 className="text-5xl font-bold mb-4">Yuan/Mhyow</h1>
-        <p className="text-xl text-muted-foreground max-w-2xl">
-          Pelajar yang suka eksplorasi teknologi, desain, dan sedang belajar membangun hal-hal keren di internet.
-        </p>
-      </section>
-
-      <section id="about" className="py-20 px-6 bg-secondary/20">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">Tentang Saya</h2>
-          <p className="text-lg">
-            Saya adalah seorang pelajar yang tertarik pada dunia teknologi, terutama web development, desain, dan game.
-          </p>
+      <header className="sticky top-0 z-50 border-b border-accent bg-background/80 backdrop-blur">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6">
+          <a href="#home" className="text-lg font-bold">
+            Yuan/Mhyow<span className="text-primary">.</span>
+          </a>
+          <VariableFontHoverNav />
         </div>
-      </section>
+      </header>
 
-      <footer className="py-10 text-center text-muted-foreground">
-        <p>© {new Date().getFullYear()} Yuan/Mhyow. Dibuat dengan React & Tailwind.</p>
-      </footer>
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Music />
+      <Games />
+      <Contact />
+
+      <Footer />
     </main>
   )
 }
