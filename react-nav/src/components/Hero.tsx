@@ -1,9 +1,7 @@
 import Bubbles from "./Bubbles";
-import { useTypewriter } from "@/hooks/use-typewriter";
+import { HandwritingSvg } from "@/components/handwriting-svg";
 
 export default function Hero() {
-  const typedName = useTypewriter("Yuan/Mhyow", 90, 800);
-
   return (
     <section
       id="home"
@@ -16,10 +14,19 @@ export default function Hero() {
           <p className="animate-hero-fade-up font-semibold text-foreground/80 [animation-delay:0.15s] text-lg md:text-xl">
             Halo, saya
           </p>
-          <h1 className="typewriter-caret animate-hero-fade-up mb-2 text-5xl font-bold leading-tight [animation-delay:0.3s] md:text-7xl">
-            {typedName}
-          </h1>
-          <p className="animate-hero-fade-up mx-auto mt-2 max-w-[560px] text-muted-foreground [animation-delay:0.45s] text-base md:text-xl md:mx-0">
+          <div className="animate-hero-fade-up [animation-delay:0.3s]">
+            <HandwritingSvg
+              text="Yuan/Mhyow"
+              fontSize={90}
+              width={600}
+              height={120}
+              duration={3}
+              delay={0.5}
+              strokeWidth={2.5}
+              className="text-primary"
+            />
+          </div>
+          <p className="animate-hero-fade-up mx-auto mt-4 max-w-[560px] text-muted-foreground [animation-delay:0.45s] text-base md:text-xl md:mx-0">
             Pelajar yang suka eksplorasi teknologi, desain, dan sedang belajar membangun hal-hal keren di internet.
           </p>
           <div className="animate-hero-fade-up mt-5 flex flex-wrap items-center justify-center gap-4 [animation-delay:0.6s] md:justify-start">
