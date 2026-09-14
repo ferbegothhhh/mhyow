@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 import CircularGallery from "./CircularGallery";
+import SectionHeading from "./SectionHeading";
 import { Globe, Zap, Palette, BarChart3, Languages, Gamepad2 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -32,12 +33,7 @@ export default function Skills() {
   return (
     <section id="skills" className="bg-secondary px-6 py-[4.5rem]">
       <div className="mx-auto max-w-6xl">
-        <ScrollReveal>
-          <h2 className="mb-8 text-center text-3xl font-bold md:text-4xl">
-            Skills
-            <span className="mx-auto mt-2 block h-1 w-14 rounded-full bg-primary" />
-          </h2>
-        </ScrollReveal>
+        <SectionHeading badge="Keahlian" title="Skills" />
 
         {reducedMotion ? (
           <ScrollReveal

@@ -1,7 +1,8 @@
-import { useState, type ComponentType, type FormEvent } from "react";
+import { useEffect, useRef, useState, type ComponentType, type FormEvent } from "react";
 import ScrollReveal from "./ScrollReveal";
+import SectionHeading from "./SectionHeading";
 import { Mail } from "lucide-react";
-import { GithubLogo, LinkedinLogo, InstagramLogo } from "@phosphor-icons/react";
+import { Check, GithubLogo, LinkedinLogo, InstagramLogo } from "@phosphor-icons/react";
 
 type ContactIcon = ComponentType<{ className?: string }>;
 
@@ -17,6 +18,14 @@ export default function Contact() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState<Record<string, string>>({});
+  const [sent, setSent] = useState(false);
+  const resetTimerRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (resetTimerRef.current) window.clearTimeout(resetTimerRef.current);
+    };
+  }, []);
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -32,26 +41,23 @@ export default function Contact() {
     }
 
     setError({});
-    alert("Terima kasih! (Integrasi pengiriman pesan belum diaktifkan.)");
     setName("");
     setEmail("");
     setMessage("");
+    setSent(true);
+    if (resetTimerRef.current) window.clearTimeout(resetTimerRef.current);
+    resetTimerRef.current = window.setTimeout(() => setSent(false), 5000);
   }
 
   const inputClass = (hasError: boolean) =>
-    `w-full rounded-lg border bg-secondary p-3 text-sm font-sans transition outline-none focus:border-primary ${
+    `w-full rounded-lg border bg-secondary p-3 text-sm font-sans transition outline-none focus:border-primary focus-visible:ring-2 focus-visible:ring-primary/40 ${
       hasError ? "border-red-600" : "border-accent"
     }`;
 
   return (
     <section id="contact" className="bg-secondary px-6 py-[4.5rem]">
       <div className="mx-auto max-w-6xl">
-        <ScrollReveal>
-          <h2 className="mb-8 text-center text-3xl font-bold md:text-4xl">
-            Hubungi Saya
-            <span className="mx-auto mt-2 block h-1 w-14 rounded-full bg-primary" />
-          </h2>
-        </ScrollReveal>
+        <SectionHeading badge="Ngobrol" title="Hubungi Saya" />
 
         <div className="mt-8 grid gap-8 md:grid-cols-2 md:items-start">
           <ScrollReveal>
@@ -63,8 +69,13 @@ export default function Contact() {
               <ul className="space-y-2">
                 {contacts.map((c, i) => (
                   <li key={i} className="flex items-center gap-2 py-1">
-                    <c.icon className="size-4 shrink-0 text-primary" />
-                    <a href={c.href} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                    <c.icon className="size-4 shrink-0 text-primary" aria-hidden="true" />
+                    <a
+                      href={c.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-sm text-primary transition hover:underline focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                    >
                       {c.label}
                     </a>
                   </li>
@@ -124,14 +135,25 @@ export default function Contact() {
                 {error.message && <p className="text-xs text-red-600">{error.message}</p>}
               </div>
 
-              <p className="text-xs text-muted-foreground">
-                Catatan: form ini bersifat statis. Untuk kirim pesan sungguhan, hubungkan ke layanan
-                seperti Formspree.
-              </p>
+              {sent ? (
+                <p
+                  role="status"
+                  aria-live="polite"
+                  className="flex items-center gap-2 rounded-lg border border-primary/40 bg-primary/10 px-4 py-3 text-sm font-medium text-accent-foreground"
+                >
+                  <Check size={18} weight="bold" className="text-primary" aria-hidden="true" />
+                  Terkirim! Terima kasih. (Integrasi pengiriman pesan belum diaktifkan.)
+                </p>
+              ) : (
+                <p className="text-xs text-muted-foreground">
+                  Catatan: form ini bersifat statis. Untuk kirim pesan sungguhan, hubungkan ke
+                  layanan seperti Formspree.
+                </p>
+              )}
 
               <button
                 type="submit"
-                className="rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:bg-accent-foreground"
+                className="rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:bg-accent-foreground active:scale-[0.96] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
                 Kirim
               </button>

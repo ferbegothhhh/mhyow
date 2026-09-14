@@ -1,5 +1,6 @@
 import ScrollReveal from "./ScrollReveal";
 import Parallax from "./Parallax";
+import SectionHeading from "./SectionHeading";
 import { Image } from "lucide-react";
 
 const projects = [
@@ -34,12 +35,7 @@ export default function Projects() {
         className="pointer-events-none absolute -right-20 bottom-16 size-96 rounded-full bg-accent/40 blur-3xl"
       />
       <div className="relative z-10 mx-auto max-w-6xl">
-        <ScrollReveal>
-          <h2 className="mb-8 text-center text-3xl font-bold md:text-4xl">
-            Project
-            <span className="mx-auto mt-2 block h-1 w-14 rounded-full bg-primary" />
-          </h2>
-        </ScrollReveal>
+        <SectionHeading badge="Karya" title="Project" />
 
         <ScrollReveal
           stagger={0.08}
@@ -48,10 +44,17 @@ export default function Projects() {
           {projects.map((p, i) => (
             <article
               key={i}
-              className="flex h-full flex-col overflow-hidden rounded-2xl border border-accent bg-background transition hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(236,72,153,0.12)]"
+              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-accent bg-background transition duration-300 hover:-translate-y-1 active:scale-[0.98] hover:shadow-[0_8px_24px_rgba(236,72,153,0.12)]"
             >
-              <div className="flex aspect-[16/10] items-center justify-center bg-accent">
-                <Image className="size-12 text-primary/50" strokeWidth={1.5} />
+              <div className="relative flex aspect-[16/10] items-center justify-center overflow-hidden bg-gradient-to-br from-accent via-accent/70 to-primary/20">
+                <Image
+                  className="size-12 text-primary/60 transition duration-500 group-hover:rotate-6 group-hover:scale-110"
+                  strokeWidth={1.5}
+                  aria-hidden="true"
+                />
+                <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+                  <div className="absolute inset-y-0 left-0 w-1/3 -translate-x-[200%] skew-x-[-12deg] bg-white/30 transition-transform duration-700 ease-out group-hover:translate-x-[400%]" />
+                </div>
               </div>
               <div className="flex flex-1 flex-col p-5">
                 <h3 className="mb-1 text-lg font-bold">{p.title}</h3>
@@ -69,13 +72,13 @@ export default function Projects() {
                 <div className="mt-auto flex gap-2.5">
                   <a
                     href="#"
-                    className="rounded-full bg-primary px-4 py-1.5 text-xs font-semibold text-primary-foreground transition hover:bg-accent-foreground"
+                    className="rounded-full bg-primary px-4 py-1.5 text-xs font-semibold text-primary-foreground transition hover:bg-accent-foreground active:scale-95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                   >
                     Demo
                   </a>
                   <a
                     href="#"
-                    className="rounded-full border border-primary px-4 py-1.5 text-xs font-semibold text-primary transition hover:bg-primary hover:text-white"
+                    className="rounded-full border border-primary px-4 py-1.5 text-xs font-semibold text-primary transition hover:bg-primary hover:text-white active:scale-95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                   >
                     Source
                   </a>

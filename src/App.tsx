@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import PillNav from "@/components/PillNav"
+import ScrollProgress from "@/components/ScrollProgress"
+import BackToTop from "@/components/BackToTop"
 import Hero from "@/components/Hero"
 import About from "@/components/About"
 import Skills from "@/components/Skills"
@@ -50,6 +52,7 @@ function App() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
+      <ScrollProgress />
       <PillNav
         logo="/favicon.svg"
         logoAlt="Yuan/Mhyow"
@@ -71,6 +74,7 @@ function App() {
       <Contact />
 
       <Footer />
+      <BackToTop />
     </main>
   )
 }

@@ -8,9 +8,9 @@ interface MarqueeProps {
 export default function Marquee({ items, className }: MarqueeProps) {
   return (
     <div
-      className={`overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] ${className}`}
+      className={`group overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] ${className}`}
     >
-      <div className="animate-marquee flex w-max items-center">
+      <div className="animate-marquee flex w-max items-center group-hover:[animation-play-state:paused]">
         {[...items, ...items].map((item, i) => (
           <span
             key={i}
