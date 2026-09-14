@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portofolio pribadi [Nama Kamu] — pelajar yang tertarik pada teknologi, gaming, dan musik.">
+  <title>Yuan/Mhyow Profile Pribad</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ======= NAVBAR ======= -->
+  <header class="navbar">
+    <nav class="navbar-inner">
+      <a href="#home" class="navbar-logo">Yuan/Mhyow<span class="logo-dot">.</span></a>
+
+      <button class="hamburger" id="hamburger" aria-label="Buka menu navigasi" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#music" class="nav-link">Musik</a></li>
+        <li><a href="#games" class="nav-link">Games</a></li>
+        <li><a href="#contact" class="nav-link">Kontak</a></li>
+        <li>
+          <button id="themeToggle" class="theme-toggle" aria-label="Ganti mode terang/gelap">🌙</button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ======= HERO ======= -->
+  <section id="home" class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-greeting">Halo, saya</p>
+        <h1 class="hero-name typewriter" id="heroName" data-text="Yuan/Mhyow">Yuan/Mhyow</h1>
+        <p class="hero-tagline">Pelajar yang suka eksplorasi teknologi, desain, dan sedang belajar membangun hal-hal keren di internet.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">Lihat Project</a>
+          <a href="#contact" class="btn btn-outline">Hubungi Saya</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div class="hero-avatar">
+          <!-- Ganti src dengan foto kamu -->
+          <img src="assets/img/avatar.png" alt="Foto [Nama Kamu]" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <!-- Bubbles dekoratif background hero -->
+    <div class="hero-bubbles" aria-hidden="true">
+      <span class="bubble"></span>
+      <span class="bubble"></span>
+      <span class="bubble"></span>
+      <span class="bubble"></span>
+      <span class="bubble"></span>
+      <span class="bubble"></span>
+      <span class="bubble"></span>
+      <span class="bubble"></span>
+    </div>
+  </section>
+
+  <!-- ======= ABOUT ======= -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">Tentang Saya</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>Saya adalah seorang pelajar yang sedang menempuh pendidikan di <strong>[Nama Sekolah / Jurusan]</strong>. Saya tertarik pada dunia teknologi, terutama web development, desain, dan game.</p>
+          <p>Di luar jam pelajaran, saya suka eksplorasi tools baru, ikut komunitas belajar, dan mengerjakan project kecil-kecilan untuk mengasah kemampuan. Tujuan saya adalah terus belajar dan suatu hari bisa berkontribusi di industri teknologi.</p>
+        </div>
+        <div class="about-highlights">
+          <h3>Highlight</h3>
+          <ul>
+            <li>📍 [Kota / Domisili]</li>
+            <li>🎓 [Nama Sekolah] — [Tahun masuk–sekarang]</li>
+            <li>💡 Interested: Web Dev, UI/UX, Game</li>
+            <li>🌱 Sedang belajar: [Topik yang sedang dipelajari]</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= SKILLS ======= -->
+  <section id="skills" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <span class="skill-icon">🌐</span>
+          <p>HTML & CSS</p>
+        </div>
+        <div class="skill-item">
+          <span class="skill-icon">⚡</span>
+          <p>JavaScript</p>
+        </div>
+        <div class="skill-item">
+          <span class="skill-icon">🎨</span>
+          <p>Desain (Canva/Figma)</p>
+        </div>
+        <div class="skill-item">
+          <span class="skill-icon">📊</span>
+          <p>Microsoft Office</p>
+        </div>
+        <div class="skill-item">
+          <span class="skill-icon">🗣️</span>
+          <p>Bahasa Inggris</p>
+        </div>
+        <div class="skill-item">
+          <span class="skill-icon">🎮</span>
+          <p>Game Dev (Dasar)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= PROJECTS ======= -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h2 class="section-title">Project</h2>
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-thumb"><img src="assets/img/project-placeholder.png" alt="Screenshot project 1" loading="lazy"></div>
+          <div class="project-body">
+            <h3>[Judul Project 1]</h3>
+            <p>Deskripsi singkat project 1 di sini.</p>
+            <div class="project-tags"><span>HTML</span><span>CSS</span></div>
+            <div class="project-links">
+              <a href="#" class="btn btn-small">Demo</a>
+              <a href="#" class="btn btn-small btn-outline">Source</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-thumb"><img src="assets/img/project-placeholder.png" alt="Screenshot project 2" loading="lazy"></div>
+          <div class="project-body">
+            <h3>[Judul Project 2]</h3>
+            <p>Deskripsi singkat project 2 di sini.</p>
+            <div class="project-tags"><span>JavaScript</span><span>API</span></div>
+            <div class="project-links">
+              <a href="#" class="btn btn-small">Demo</a>
+              <a href="#" class="btn btn-small btn-outline">Source</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-thumb"><img src="assets/img/project-placeholder.png" alt="Screenshot project 3" loading="lazy"></div>
+          <div class="project-body">
+            <h3>[Judul Project 3]</h3>
+            <p>Deskripsi singkat project 3 di sini.</p>
+            <div class="project-tags"><span>Desain</span><span>UI</span></div>
+            <div class="project-links">
+              <a href="#" class="btn btn-small">Demo</a>
+              <a href="#" class="btn btn-small btn-outline">Source</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= MUSIK / PLAYLIST FAVORIT (OCPSIONAL) ======= -->
+  <section id="music" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Musik Favorit</h2>
+      <p class="section-subtitle">Beberapa lagu yang sering saya dengar saat belajar atau nugas.</p>
+      <div class="music-grid">
+        <div class="music-card">
+          <div class="music-cover"><img src="assets/img/music-placeholder.png" alt="Cover album 1" loading="lazy"></div>
+          <div class="music-body">
+            <h3>[Judul Lagu]</h3>
+            <p>[Nama Artis]</p>
+            <a href="#" class="btn btn-small">▶ Dengar</a>
+          </div>
+        </div>
+        <div class="music-card">
+          <div class="music-cover"><img src="assets/img/music-placeholder.png" alt="Cover album 2" loading="lazy"></div>
+          <div class="music-body">
+            <h3>[Judul Lagu]</h3>
+            <p>[Nama Artis]</p>
+            <a href="#" class="btn btn-small">▶ Dengar</a>
+          </div>
+        </div>
+        <div class="music-card">
+          <div class="music-cover"><img src="assets/img/music-placeholder.png" alt="Cover album 3" loading="lazy"></div>
+          <div class="music-body">
+            <h3>[Judul Lagu]</h3>
+            <p>[Nama Artis]</p>
+            <a href="#" class="btn btn-small">▶ Dengar</a>
+          </div>
+        </div>
+        <div class="music-card">
+          <div class="music-cover"><img src="assets/img/music-placeholder.png" alt="Cover album 4" loading="lazy"></div>
+          <div class="music-body">
+            <h3>[Judul Lagu]</h3>
+            <p>[Nama Artis]</p>
+            <a href="#" class="btn btn-small">▶ Dengar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= GAMES (OPSIONAL) ======= -->
+  <section id="games" class="section">
+    <div class="container">
+      <h2 class="section-title">Games</h2>
+      <p class="section-subtitle">Game yang sering saya mainkan. Klik untuk cek di platformnya.</p>
+      <div class="games-grid">
+        <article class="game-card">
+          <div class="game-thumb"><img src="assets/img/game-placeholder.png" alt="Poster game 1" loading="lazy"></div>
+          <div class="game-body">
+            <h3>[Nama Game]</h3>
+            <p class="game-meta">PC · Genre</p>
+            <a href="#" class="btn btn-small">Selengkapnya</a>
+          </div>
+        </article>
+        <article class="game-card">
+          <div class="game-thumb"><img src="assets/img/game-placeholder.png" alt="Poster game 2" loading="lazy"></div>
+          <div class="game-body">
+            <h3>[Nama Game]</h3>
+            <p class="game-meta">Mobile · Genre</p>
+            <a href="#" class="btn btn-small">Selengkapnya</a>
+          </div>
+        </article>
+        <article class="game-card">
+          <div class="game-thumb"><img src="assets/img/game-placeholder.png" alt="Poster game 3" loading="lazy"></div>
+          <div class="game-body">
+            <h3>[Nama Game]</h3>
+            <p class="game-meta">Console · Genre</p>
+            <a href="#" class="btn btn-small">Selengkapnya</a>
+          </div>
+        </article>
+        <article class="game-card">
+          <div class="game-thumb"><img src="assets/img/game-placeholder.png" alt="Poster game 4" loading="lazy"></div>
+          <div class="game-body">
+            <h3>[Nama Game]</h3>
+            <p class="game-meta">PC · Genre</p>
+            <a href="#" class="btn btn-small">Selengkapnya</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= CONTACT ======= -->
+  <section id="contact" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Hubungi Saya</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p>Ada pertanyaan atau mau ngobrol? Silakan hubungi saya lewat email atau media sosial berikut.</p>
+          <ul class="contact-list">
+            <li>📧 <a href="mailto:emailkamu@example.com">emailkamu@example.com</a></li>
+            <li>🐙 <a href="https://github.com/username" target="_blank" rel="noopener">GitHub</a></li>
+            <li>💼 <a href="https://www.linkedin.com/in/username" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li>📸 <a href="https://www.instagram.com/username" target="_blank" rel="noopener">Instagram</a></li>
+          </ul>
+        </div>
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="name">Nama</label>
+            <input type="text" id="name" name="name" placeholder="Nama kamu" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="email@gmail.com" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Pesan</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tulis pesanmu..." required></textarea>
+          </div>
+          <p class="form-note">Catatan: form ini bersifat statis. Untuk kirim pesan sungguhan, hubungkan ke layanan seperti Formspree.</p>
+          <button type="submit" class="btn btn-primary">Kirim</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="footer">
+    <p>© <span id="year"></span> [Nama Kamu]. Dibuat dengan 💗 menggunakan HTML, CSS & JavaScript.</p>
+  </footer>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>
