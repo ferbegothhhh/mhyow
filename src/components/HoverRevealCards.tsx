@@ -131,6 +131,7 @@ const HoverRevealCards: React.FC<HoverRevealCardsProps> = ({
                 key={item.id}
                 role="button"
                 tabIndex={0}
+                data-card-id={item.id}
                 aria-label={`Putar preview ${item.title}${item.subtitle ? ` oleh ${item.subtitle}` : ""}`}
                 aria-pressed={isPressed}
                 onClick={handleClick}

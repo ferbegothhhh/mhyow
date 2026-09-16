@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ArrowSquareOut,
   Pause,
@@ -103,6 +103,61 @@ export default function Music() {
     setDuration(0);
   }, []);
 
+  const ensureTrack = useCallback(
+    async (index: number): Promise<TrackPreview | null> => {
+      let track = cacheRef.current.get(index);
+      if (track === undefined) {
+        const song = songs[index] ?? { title: "", artist: "" };
+        track = await searchTrack(song.title, song.artist);
+        cacheRef.current.set(index, track ?? null);
+      }
+      if (track) {
+        const artwork = track.artworkUrl;
+        setTracks((prev) =>
+          prev.map((t, i) =>
+            i === index && t.imageUrl !== artwork ? { ...t, imageUrl: artwork } : t
+          )
+        );
+      }
+      return track;
+    },
+    []
+  );
+
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const cards = Array.from(
+      container.querySelectorAll<HTMLElement>("[data-card-id]")
+    );
+
+    if (typeof IntersectionObserver === "undefined") {
+      cards.forEach((el) => {
+        const id = el.dataset.cardId;
+        if (id != null) void ensureTrack(Number(id));
+      });
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const id = (entry.target as HTMLElement).dataset.cardId;
+          if (id != null) void ensureTrack(Number(id));
+          io.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "240px 200px", threshold: 0.05 }
+    );
+
+    cards.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [ensureTrack]);
+
   const togglePlay = useCallback(
     async (index: number) => {
       const audio = audioRef.current;
@@ -122,9 +177,7 @@ export default function Music() {
       let track = cacheRef.current.get(index);
       if (track === undefined) {
         setLoadingId(index);
-        const song = songs[index] ?? { title: "", artist: "" };
-        track = await searchTrack(song.title, song.artist);
-        cacheRef.current.set(index, track ?? null);
+        track = await ensureTrack(index);
         setLoadingId(null);
       }
 
@@ -143,14 +196,9 @@ export default function Music() {
       setIsPlaying(true);
       setCurrentTime(0);
       setDuration(0);
-      setTracks((prev) =>
-        prev.map((t, i) =>
-          i === index && track ? { ...t, imageUrl: track.artworkUrl } : t
-        )
-      );
       audio.play().catch(() => {});
     },
-    [playingId]
+    [playingId, ensureTrack]
   );
 
   const eqBars = (
@@ -238,13 +286,15 @@ export default function Music() {
         />
 
         <ScrollReveal className="mt-14">
-          <HoverRevealCards
-            horizontal
-            items={tracks}
-            onCardClick={(item) => void togglePlay(Number(item.id))}
-            renderOverlay={renderOverlay}
-            pressedItemId={playingId}
-          />
+          <div ref={containerRef}>
+            <HoverRevealCards
+              horizontal
+              items={tracks}
+              onCardClick={(item) => void togglePlay(Number(item.id))}
+              renderOverlay={renderOverlay}
+              pressedItemId={playingId}
+            />
+          </div>
         </ScrollReveal>
 
         <audio
