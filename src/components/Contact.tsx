@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type ComponentType, type FormEvent } from 
 import ScrollReveal from "./ScrollReveal";
 import SectionHeading from "./SectionHeading";
 import { Mail } from "lucide-react";
-import { Check, GithubLogo, LinkedinLogo, InstagramLogo } from "@phosphor-icons/react";
+import { Check, GithubLogo, LinkedinLogo, InstagramLogo, CaretRight } from "@phosphor-icons/react";
 
 type ContactIcon = ComponentType<{ className?: string }>;
 
@@ -20,6 +20,9 @@ export default function Contact() {
   const [error, setError] = useState<Record<string, string>>({});
   const [sent, setSent] = useState(false);
   const resetTimerRef = useRef<number | null>(null);
+  const nameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     return () => {
@@ -37,6 +40,8 @@ export default function Contact() {
 
     if (Object.keys(nextError).length > 0) {
       setError(nextError);
+      const firstInvalid = nextError.name ? nameRef : nextError.email ? emailRef : messageRef;
+      requestAnimationFrame(() => firstInvalid.current?.focus());
       return;
     }
 
@@ -66,17 +71,27 @@ export default function Contact() {
                 Ada pertanyaan atau mau ngobrol? Silakan hubungi saya lewat email atau media sosial
                 berikut.
               </p>
-              <ul className="space-y-2">
+              <ul className="grid gap-3 sm:grid-cols-2">
                 {contacts.map((c, i) => (
-                  <li key={i} className="flex items-center gap-2 py-1">
-                    <c.icon className="size-4 shrink-0 text-primary" aria-hidden="true" />
+                  <li key={i}>
                     <a
                       href={c.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="rounded-sm text-primary transition hover:underline focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                      className="group flex items-center gap-3 rounded-xl border border-accent bg-white/70 p-3 transition duration-300 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-[0_8px_24px_rgba(154,52,18,0.12)] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                     >
-                      {c.label}
+                      <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary transition duration-300 group-hover:bg-primary group-hover:text-white">
+                        <c.icon className="size-4" aria-hidden="true" />
+                      </span>
+                      <span className="min-w-0 flex-1 truncate text-sm font-semibold text-foreground">
+                        {c.label}
+                      </span>
+                      <CaretRight
+                        size={14}
+                        weight="bold"
+                        aria-hidden="true"
+                        className="shrink-0 text-muted-foreground/60 transition duration-300 group-hover:translate-x-0.5 group-hover:text-primary"
+                      />
                     </a>
                   </li>
                 ))}
@@ -90,19 +105,42 @@ export default function Contact() {
               noValidate
               className="grid gap-4 rounded-2xl border border-accent bg-background p-6"
             >
+              {Object.keys(error).length > 0 && (
+                <div
+                  role="alert"
+                  className="rounded-lg border border-red-600/40 bg-red-600/10 px-4 py-3"
+                >
+                  <p className="text-sm font-semibold text-red-700">
+                    Mohon perbaiki isian berikut:
+                  </p>
+                  <ul className="mt-1 list-inside list-disc space-y-0.5 text-xs text-red-700">
+                    {error.name ? <li>{error.name}</li> : null}
+                    {error.email ? <li>{error.email}</li> : null}
+                    {error.message ? <li>{error.message}</li> : null}
+                  </ul>
+                </div>
+              )}
+
               <div className="grid gap-1.5">
                 <label htmlFor="name" className="text-sm font-medium">
                   Nama
                 </label>
                 <input
+                  ref={nameRef}
                   id="name"
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Nama kamu"
+                  aria-invalid={Boolean(error.name)}
+                  aria-describedby={error.name ? "name-error" : undefined}
                   className={inputClass(Boolean(error.name))}
                 />
-                {error.name && <p className="text-xs text-red-600">{error.name}</p>}
+                {error.name && (
+                  <p id="name-error" className="text-xs text-red-600">
+                    {error.name}
+                  </p>
+                )}
               </div>
 
               <div className="grid gap-1.5">
@@ -110,14 +148,21 @@ export default function Contact() {
                   Email
                 </label>
                 <input
+                  ref={emailRef}
                   id="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="email@gmail.com"
+                  aria-invalid={Boolean(error.email)}
+                  aria-describedby={error.email ? "email-error" : undefined}
                   className={inputClass(Boolean(error.email))}
                 />
-                {error.email && <p className="text-xs text-red-600">{error.email}</p>}
+                {error.email && (
+                  <p id="email-error" className="text-xs text-red-600">
+                    {error.email}
+                  </p>
+                )}
               </div>
 
               <div className="grid gap-1.5">
@@ -125,14 +170,21 @@ export default function Contact() {
                   Pesan
                 </label>
                 <textarea
+                  ref={messageRef}
                   id="message"
                   rows={4}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Tulis pesanmu..."
+                  aria-invalid={Boolean(error.message)}
+                  aria-describedby={error.message ? "message-error" : undefined}
                   className={`${inputClass(Boolean(error.message))} resize-none`}
                 />
-                {error.message && <p className="text-xs text-red-600">{error.message}</p>}
+                {error.message && (
+                  <p id="message-error" className="text-xs text-red-600">
+                    {error.message}
+                  </p>
+                )}
               </div>
 
               {sent ? (

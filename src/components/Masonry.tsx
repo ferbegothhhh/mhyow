@@ -2,6 +2,7 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ArrowUpRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -310,6 +311,20 @@ const Masonry: React.FC<MasonryProps> = ({
             {colorShiftOnHover && (
               <div className="color-overlay absolute inset-0 rounded-[10px] bg-gradient-to-tr from-[#9a3412]/50 to-[#059669]/45 opacity-0 pointer-events-none" />
             )}
+            {item.tags && item.tags.length > 0 ? (
+              <span
+                aria-hidden="true"
+                className="absolute left-2.5 top-2.5 z-[1] rounded-full bg-black/50 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-white backdrop-blur-sm"
+              >
+                {item.tags[0]}
+              </span>
+            ) : null}
+            <span
+              aria-hidden="true"
+              className="absolute right-2.5 top-2.5 grid size-6 translate-y-1 place-items-center rounded-full bg-white/90 text-primary opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100"
+            >
+              <ArrowUpRight size={13} strokeWidth={2.5} />
+            </span>
             {(item.title || (item.tags && item.tags.length > 0)) && (
               <div
                 aria-hidden="true"

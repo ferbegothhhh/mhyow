@@ -61,7 +61,9 @@ export default function CountUp({
       className={`flex h-full flex-col items-center justify-center gap-0.5 rounded-2xl border border-accent bg-white/70 p-4 text-center backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(154,52,18,0.15)] ${className}`}
     >
       {IconComponent ? (
-        <IconComponent size={22} aria-hidden="true" className="text-primary" />
+        <span className="grid size-9 place-items-center rounded-xl bg-primary/10">
+          <IconComponent size={18} aria-hidden="true" className="text-primary" />
+        </span>
       ) : null}
       <span
         ref={numRef}

@@ -3,6 +3,8 @@ import Parallax from "./Parallax";
 import SectionHeading from "./SectionHeading";
 import Masonry from "./Masonry";
 import type { Item } from "./Masonry";
+import ScrollReveal from "./ScrollReveal";
+import { ArrowRight } from "@phosphor-icons/react";
 
 const tagSets = [
   ["Web", "CSS"],
@@ -79,6 +81,19 @@ export default function Projects() {
           blurToFocus
           stagger={0.05}
         />
+
+        <ScrollReveal className="mt-10 flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:gap-5">
+          <p className="text-muted-foreground">
+            Ada project serupa yang mau ikut saya kerjakan?
+          </p>
+          <a
+            href="#contact"
+            className="inline-flex cursor-pointer items-center gap-2 rounded-full border-2 border-primary px-5 py-2.5 text-sm font-semibold text-primary transition hover:bg-primary hover:text-white active:scale-95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          >
+            Hubungi Saya
+            <ArrowRight size={15} weight="bold" aria-hidden="true" />
+          </a>
+        </ScrollReveal>
       </div>
     </section>
   );

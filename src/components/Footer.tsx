@@ -14,7 +14,12 @@ export default function Footer() {
         className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent"
       />
       <div className="relative z-10">
-        <p className="inline-flex items-center gap-1">
+        <p className="inline-flex items-center gap-1.5 font-display text-xl font-semibold text-primary">
+          Terima kasih sudah mampir
+          <Heart className="size-3.5 fill-primary" aria-hidden="true" />
+        </p>
+
+        <p className="mt-1 inline-flex items-center gap-1">
           © {new Date().getFullYear()} Yuan/Mhyow. Dibuat dengan{" "}
           <Heart className="size-3.5 fill-primary text-primary" aria-hidden="true" /> menggunakan
           React, CSS & Tailwind.

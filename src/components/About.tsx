@@ -81,6 +81,9 @@ export default function About() {
               setiap karya dibuat dengan hati dan dirancang khusus untuk Anda.
             </p>
           </ScrollReveal>
+          <p aria-hidden="true" className="font-display mt-5 text-2xl font-semibold text-primary">
+            — Yuan/Mhyow
+          </p>
         </div>
 
         <Marquee
