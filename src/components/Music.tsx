@@ -286,8 +286,8 @@ export default function Music() {
                 aria-label={`${song.title} oleh ${song.artist}`}
                 className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border transition-all duration-300 ${
                   isActive
-                    ? "border-primary bg-background shadow-[0_0_24px_rgba(236,72,153,0.18)]"
-                    : "border-accent bg-background hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(236,72,153,0.1)] active:scale-[0.98]"
+                    ? "border-primary bg-background shadow-[0_0_24px_rgba(154,52,18,0.18)]"
+                    : "border-accent bg-background hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(154,52,18,0.1)] active:scale-[0.98]"
                 }`}
               >
                 <div

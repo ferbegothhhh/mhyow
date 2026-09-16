@@ -26,7 +26,7 @@ export default function Games() {
           {games.map((game, i) => (
             <article
               key={i}
-              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-accent bg-background transition duration-300 hover:-translate-y-1 active:scale-[0.98] hover:shadow-[0_8px_24px_rgba(236,72,153,0.12)]"
+              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-accent bg-background transition duration-300 hover:-translate-y-1 active:scale-[0.98] hover:shadow-[0_8px_24px_rgba(154,52,18,0.12)]"
             >
               <div className="relative flex aspect-[16/10] items-center justify-center overflow-hidden bg-gradient-to-br from-accent via-accent/70 to-primary/20">
                 <Gamepad2
@@ -38,7 +38,7 @@ export default function Games() {
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-0 overflow-hidden opacity-0 transition duration-300 group-hover:opacity-100"
                 >
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(236,72,153,0.25),transparent_60%)]" />
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(154,52,18,0.25),transparent_60%)]" />
                 </div>
               </div>
               <div className="flex flex-1 flex-col p-5">

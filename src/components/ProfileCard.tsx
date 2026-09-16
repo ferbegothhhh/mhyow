@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useCallback, useMemo } from 'react';
 
-const DEFAULT_INNER_GRADIENT = 'linear-gradient(145deg, rgba(236,72,153,0.55) 0%, rgba(251,207,232,0.35) 100%)';
+const DEFAULT_INNER_GRADIENT = 'linear-gradient(145deg, rgba(154,52,18,0.55) 0%, rgba(241,214,170,0.35) 100%)';
 
 const ANIMATION_CONFIG = {
   INITIAL_DURATION: 1200,
@@ -343,7 +343,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       '--icon': iconUrl ? `url(${iconUrl})` : 'none',
       '--grain': grainUrl ? `url(${grainUrl})` : 'none',
       '--inner-gradient': innerGradient ?? DEFAULT_INNER_GRADIENT,
-      '--behind-glow-color': behindGlowColor ?? 'rgba(236, 72, 153, 0.55)',
+      '--behind-glow-color': behindGlowColor ?? 'rgba(154, 52, 18, 0.5)',
       '--behind-glow-size': behindGlowSize ?? '50%',
       '--pointer-x': '50%',
       '--pointer-y': '50%',
@@ -356,12 +356,12 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       '--background-x': '50%',
       '--background-y': '50%',
       '--card-radius': cardRadius,
-      '--sunpillar-1': 'hsl(350, 95%, 78%)',
-      '--sunpillar-2': 'hsl(338, 90%, 74%)',
-      '--sunpillar-3': 'hsl(325, 87%, 72%)',
-      '--sunpillar-4': 'hsl(340, 92%, 70%)',
-      '--sunpillar-5': 'hsl(355, 85%, 75%)',
-      '--sunpillar-6': 'hsl(330, 88%, 69%)',
+      '--sunpillar-1': 'hsl(28, 95%, 78%)',
+      '--sunpillar-2': 'hsl(24, 90%, 74%)',
+      '--sunpillar-3': 'hsl(18, 87%, 72%)',
+      '--sunpillar-4': 'hsl(30, 92%, 70%)',
+      '--sunpillar-5': 'hsl(26, 85%, 75%)',
+      '--sunpillar-6': 'hsl(20, 88%, 69%)',
       '--sunpillar-clr-1': 'var(--sunpillar-1)',
       '--sunpillar-clr-2': 'var(--sunpillar-2)',
       '--sunpillar-clr-3': 'var(--sunpillar-3)',
@@ -601,7 +601,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                   className="font-semibold m-0"
                   style={{
                     fontSize: 'min(5svh, 3em)',
-                    backgroundImage: 'linear-gradient(to bottom, #fff, #ec4899)',
+                    backgroundImage: 'linear-gradient(to bottom, #fff, #9a3412)',
                     backgroundSize: '1em 1.5em',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
@@ -621,7 +621,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                     top: '-12px',
                     fontSize: '16px',
                     margin: '0 auto',
-                    backgroundImage: 'linear-gradient(to bottom, #fff, #db2777)',
+                    backgroundImage: 'linear-gradient(to bottom, #fff, #c2410c)',
                     backgroundSize: '1em 1.5em',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',

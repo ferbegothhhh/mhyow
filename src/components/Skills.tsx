@@ -43,7 +43,7 @@ export default function Skills() {
             {skills.map((skill, index) => (
               <div
                 key={index}
-                className="flex h-full items-center gap-3 rounded-xl border border-accent bg-background p-4 transition hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(236,72,153,0.12)]"
+                className="flex h-full items-center gap-3 rounded-xl border border-accent bg-background p-4 transition hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(154,52,18,0.12)]"
               >
                 <skill.icon className="size-5 shrink-0 text-primary" strokeWidth={2} />
                 <p className="font-medium">{skill.name}</p>

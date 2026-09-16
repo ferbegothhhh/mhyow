@@ -23,7 +23,7 @@ export default function BackToTop() {
             : "smooth",
         })
       }
-      className={`fixed bottom-6 right-6 z-[1100] inline-flex size-11 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-[0_8px_24px_rgba(236,72,153,0.35)] transition duration-300 hover:-translate-y-1 hover:bg-accent-foreground active:scale-95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
+      className={`fixed bottom-6 right-6 z-[1100] inline-flex size-11 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-[0_8px_24px_rgba(154,52,18,0.35)] transition duration-300 hover:-translate-y-1 hover:bg-accent-foreground active:scale-95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
         visible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-4 opacity-0"

@@ -9,24 +9,25 @@
 :root {
   font-family: 'Geist Variable', 'Montserrat Variable', system-ui, sans-serif;
   line-height: 1.6;
-  --background: #ffffff;
-  --foreground: #2b2b2b;
+  --background: #fffbeb;
+  --foreground: #3f2d24;
   --card: #ffffff;
-  --card-foreground: #2b2b2b;
+  --card-foreground: #3f2d24;
   --popover: #ffffff;
-  --popover-foreground: #2b2b2b;
-  --primary: #ec4899;
+  --popover-foreground: #3f2d24;
+  --primary: #9a3412;
   --primary-foreground: #ffffff;
-  --secondary: #fff5f8;
-  --secondary-foreground: #2b2b2b;
-  --muted: #fff5f8;
-  --muted-foreground: #6b6b6b;
-  --accent: #fbcfe8;
-  --accent-foreground: #db2777;
+  --secondary: #fdf3e0;
+  --secondary-foreground: #51321e;
+  --muted: #f7ecda;
+  --muted-foreground: #6e5544;
+  --accent: #fbe7c8;
+  --accent-foreground: #b45309;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #fbcfe8;
-  --input: #fbcfe8;
-  --ring: #ec4899;
+  --border: #ead9bb;
+  --input: #ead9bb;
+  --ring: #9a3412;
+  --sage: #059669;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -34,13 +35,13 @@
   --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0.875rem;
   --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: #2b2b2b;
-  --sidebar-primary: #ec4899;
+  --sidebar-foreground: #3f2d24;
+  --sidebar-primary: #9a3412;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #fff5f8;
-  --sidebar-accent-foreground: #2b2b2b;
-  --sidebar-border: #fbcfe8;
-  --sidebar-ring: #ec4899;
+  --sidebar-accent: #fbe7c8;
+  --sidebar-accent-foreground: #b45309;
+  --sidebar-border: #ead9bb;
+  --sidebar-ring: #9a3412;
 }
 
 body {
@@ -59,6 +60,7 @@ body {
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar: var(--sidebar);
+  --color-sage: var(--sage);
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
   --color-chart-3: var(--chart-3);

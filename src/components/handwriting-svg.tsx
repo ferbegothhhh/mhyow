@@ -130,7 +130,7 @@ export function HandwritingSvg({
       width={width}
       height={height}
       viewBox={svgViewBox}
-      className={cn("text-rose-500", className)}
+      className={cn("text-primary", className)}
       aria-hidden={true}
     >
       <title>Handwriting SVG</title>
