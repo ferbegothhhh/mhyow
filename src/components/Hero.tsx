@@ -47,7 +47,7 @@ export default function Hero() {
               className="text-primary"
             />
           </div>
-          <p className="font-display mx-auto mt-4 max-w-[560px] text-muted-foreground text-base md:text-xl md:mx-0">
+          <p className="font-display mx-auto mt-4 max-w-[560px] leading-snug text-muted-foreground text-xl md:text-2xl md:mx-0">
             <RevealWords
               text="Kreator visual dan kriya yang menemukan kebahagiaan dalam proses penciptaan. Keahlian saya mencakup digital art, melukis, merajut, membuat handmade gifts yang berkesan, hingga meracik resep di dapur. Setiap karya lahir dari ketelitian, imajinasi, dan inspirasi dari musik yang saya dengarkan."
               baseDelay={0.55}

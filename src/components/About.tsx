@@ -63,8 +63,8 @@ export default function About() {
           <span className="mx-auto mt-3 block h-1 w-16 rounded-full bg-primary" />
         </h2>
 
-        <div className="mx-auto mt-8 max-w-3xl text-center">
-          <p className="font-display text-lg font-semibold leading-relaxed text-foreground md:text-xl">
+        <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-accent bg-white/70 p-6 text-center shadow-[0_8px_24px_rgba(154,52,18,0.08)] backdrop-blur md:p-8">
+          <p className="font-sans text-lg font-semibold leading-relaxed text-foreground md:text-xl">
             <RevealWords
               text="Selamat datang di ruang kreatif saya, tempat seni visual, kriya, dan proses penciptaan bertemu."
               baseDelay={0.1}
