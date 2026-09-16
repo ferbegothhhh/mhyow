@@ -46,7 +46,7 @@ export default function Games() {
                 <p className="mb-3 text-sm font-medium text-accent-foreground">{game.meta}</p>
                 <a
                   href="#"
-                  className="mt-auto rounded-full bg-primary px-4 py-1.5 text-center text-xs font-semibold text-primary-foreground transition hover:bg-accent-foreground active:scale-95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  className="mt-auto cursor-pointer rounded-full bg-primary px-4 py-1.5 text-center text-xs font-semibold text-primary-foreground transition hover:bg-accent-foreground active:scale-95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 >
                   Selengkapnya
                 </a>

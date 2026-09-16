@@ -102,6 +102,11 @@ body {
   }
   html {
     @apply font-sans scroll-smooth;
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--primary) 45%, transparent) transparent;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--primary) 22%, transparent);
   }
 }
 

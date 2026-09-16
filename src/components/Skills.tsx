@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ScrollReveal from "./ScrollReveal";
-import CircularGallery from "./CircularGallery";
+import AccordionGallery from "./AccordionGallery";
 import SectionHeading from "./SectionHeading";
 import { Globe, Zap, Palette, BarChart3, Languages, Gamepad2 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -15,12 +15,12 @@ const skills: { icon: LucideIcon; name: string }[] = [
 ];
 
 const galleryItems = [
-  { image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&h=600&fit=crop&auto=format&q=60", text: "Digital Art" },
-  { image: "https://images.unsplash.com/photo-1580136579312-94651dfd596d?w=800&h=600&fit=crop&auto=format&q=60", text: "Melukis" },
-  { image: "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=800&h=600&fit=crop&auto=format&q=60", text: "Merajut" },
-  { image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&h=600&fit=crop&auto=format&q=60", text: "Memasak" },
-  { image: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=800&h=600&fit=crop&auto=format&q=60", text: "Musik" },
-  { image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&h=600&fit=crop&auto=format&q=60", text: "Coding" },
+  { image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&h=600&fit=crop&auto=format&q=60", label: "Digital Art", link: "#" },
+  { image: "https://images.unsplash.com/photo-1580136579312-94651dfd596d?w=800&h=600&fit=crop&auto=format&q=60", label: "Melukis", link: "#" },
+  { image: "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=800&h=600&fit=crop&auto=format&q=60", label: "Merajut", link: "#" },
+  { image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&h=600&fit=crop&auto=format&q=60", label: "Memasak", link: "#" },
+  { image: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=800&h=600&fit=crop&auto=format&q=60", label: "Musik", link: "#" },
+  { image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&h=600&fit=crop&auto=format&q=60", label: "Coding", link: "#" },
 ];
 
 export default function Skills() {
@@ -52,15 +52,17 @@ export default function Skills() {
           </ScrollReveal>
         ) : (
           <ScrollReveal className="mt-8">
-            <div className="h-[420px] w-full overflow-hidden rounded-3xl md:h-[500px]">
-              <CircularGallery
-                items={galleryItems}
-                bend={2.5}
-                borderRadius={0.06}
-                textColor="#ffffff"
-                font="bold 28px 'Montserrat Variable'"
-              />
-            </div>
+            <AccordionGallery
+              items={galleryItems}
+              defaultIndex={2}
+              accentColor="#9a3412"
+              overlayColor="#3f2d24"
+              textColor="#ffffff"
+              height={460}
+              trigger="hover"
+              showLabels
+              grayscale={false}
+            />
           </ScrollReveal>
         )}
       </div>

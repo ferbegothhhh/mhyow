@@ -28,7 +28,7 @@ export default function Footer() {
               aria-label={s.label}
               target="_blank"
               rel="noopener noreferrer"
-              className="grid size-9 place-items-center rounded-full border border-accent bg-white/70 text-primary transition duration-300 hover:-translate-y-1 hover:bg-primary hover:text-white active:scale-95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              className="grid size-9 cursor-pointer place-items-center rounded-full border border-accent bg-white/70 text-primary transition duration-300 hover:-translate-y-1 hover:bg-primary hover:text-white active:scale-95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
               <s.icon size={16} aria-hidden="true" />
             </a>
@@ -44,7 +44,7 @@ export default function Footer() {
                   : "smooth",
               })
             }
-            className="grid size-9 place-items-center rounded-full border border-accent bg-white/70 text-primary transition duration-300 hover:-translate-y-1 hover:bg-primary hover:text-white active:scale-95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            className="grid size-9 cursor-pointer place-items-center rounded-full border border-accent bg-white/70 text-primary transition duration-300 hover:-translate-y-1 hover:bg-primary hover:text-white active:scale-95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
             <ArrowUp size={16} weight="bold" aria-hidden="true" />
           </button>

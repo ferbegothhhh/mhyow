@@ -153,7 +153,7 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:bg-accent-foreground active:scale-[0.96] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                className="cursor-pointer rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:bg-accent-foreground active:scale-[0.96] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
                 Kirim
               </button>

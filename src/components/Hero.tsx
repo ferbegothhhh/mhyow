@@ -3,7 +3,9 @@ import RevealWords from "@/components/RevealWords";
 import ProfileCard from "@/components/ProfileCard";
 import Parallax from "@/components/Parallax";
 import Magnetic from "@/components/Magnetic";
-import { CaretDoubleDown } from "@phosphor-icons/react";
+import { CaretDoubleDown, Sparkle } from "@phosphor-icons/react";
+
+const heroSkills = ["Digital Art", "Melukis", "Kriya", "Merajut", "Musik", "Memasak"];
 
 export default function Hero() {
   return (
@@ -47,7 +49,7 @@ export default function Hero() {
               className="text-primary"
             />
           </div>
-          <p className="font-display mx-auto mt-4 max-w-[560px] leading-snug text-muted-foreground text-xl md:text-2xl md:mx-0">
+          <p className="mx-auto mt-4 max-w-[560px] leading-relaxed text-muted-foreground text-lg md:text-xl md:mx-0">
             <RevealWords
               text="Kreator visual dan kriya yang menemukan kebahagiaan dalam proses penciptaan. Keahlian saya mencakup digital art, melukis, merajut, membuat handmade gifts yang berkesan, hingga meracik resep di dapur. Setiap karya lahir dari ketelitian, imajinasi, dan inspirasi dari musik yang saya dengarkan."
               baseDelay={0.55}
@@ -70,6 +72,20 @@ export default function Hero() {
               Hubungi Saya
             </a>
           </div>
+          <ul
+            aria-label="Keahlian"
+            className="animate-hero-fade-up mt-6 flex flex-wrap items-center justify-center gap-2 [animation-delay:0.8s] md:justify-start"
+          >
+            {heroSkills.map((skill) => (
+              <li
+                key={skill}
+                className="inline-flex cursor-default items-center gap-1 rounded-full border border-accent bg-white/60 px-3 py-1 text-xs font-semibold text-accent-foreground backdrop-blur"
+              >
+                <Sparkle size={11} weight="fill" aria-hidden="true" className="text-primary" />
+                {skill}
+              </li>
+            ))}
+          </ul>
         </div>
 
         <Parallax speed={-14}>
